@@ -106,11 +106,12 @@ def main() -> None:
     clean_runs = []
     for root_index, label in enumerate(("clean-a", "clean-b"), 1):
         base = RUNS / label
-        extract(TASK / "输入数据包.zip", base)
-        before = {path.relative_to(base).as_posix(): sha(path) for path in base.rglob("*") if path.is_file()}
+        input_root = base / "input"
+        extract(TASK / "输入数据包.zip", input_root)
+        before = {path.relative_to(input_root).as_posix(): sha(path) for path in input_root.rglob("*") if path.is_file()}
         for process_index in (1, 2):
             output = base / f"delivery-{process_index}"
-            completed = build(base, output, f"catalog_clean_{root_index}_{process_index}")
+            completed = build(input_root, output, f"catalog_clean_{root_index}_{process_index}")
             if completed.returncode:
                 raise AssertionError(completed.stdout + completed.stderr)
             generated = compare(output, expected)
@@ -124,9 +125,9 @@ def main() -> None:
                 }
             )
         after = {
-            path.relative_to(base).as_posix(): sha(path)
-            for path in base.rglob("*")
-            if path.is_file() and not any(part.startswith("delivery-") for part in path.relative_to(base).parts)
+            path.relative_to(input_root).as_posix(): sha(path)
+            for path in input_root.rglob("*")
+            if path.is_file()
         }
         if before != after:
             raise AssertionError("输入材料发生变化")
