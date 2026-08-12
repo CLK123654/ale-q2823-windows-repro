@@ -174,9 +174,9 @@ def main() -> None:
     for name in ("00_schema.sql", "20_apply_batch.sql", "30_replay_batches.sql"):
         shutil.copy2(SQL_ROOT / name, stage / "sql" / name)
 
-    export(args.psql, args.database_url, "SELECT product_id,coalesce(name,'') name,coalesce(price::text,'') price,is_deleted::text,last_lsn::text,last_seq::text,last_event_id FROM core.catalog_state ORDER BY product_id", stage / "results/catalog_state.csv")
+    export(args.psql, args.database_url, "SELECT product_id,name,price::text price,is_deleted::text,last_lsn::text,last_seq::text,last_event_id FROM core.catalog_state ORDER BY product_id", stage / "results/catalog_state.csv")
     export(args.psql, args.database_url, "SELECT product_id,name,price::text price,is_deleted::text,last_lsn::text,last_seq::text,last_event_id FROM core.catalog_state WHERE NOT is_deleted ORDER BY product_id", stage / "results/active_catalog.csv")
-    export(args.psql, args.database_url, "SELECT event_id,batch_id,product_id,decision,winner_event_id,coalesce(decided_against_lsn::text,'') decided_against_lsn,coalesce(decided_against_seq::text,'') decided_against_seq,coalesce(decided_against_event_id,'') decided_against_event_id FROM ops.apply_decision ORDER BY batch_id,event_id", stage / "results/decision_ledger.csv")
+    export(args.psql, args.database_url, "SELECT event_id,batch_id,product_id,decision,winner_event_id,decided_against_lsn::text,decided_against_seq::text,decided_against_event_id FROM ops.apply_decision ORDER BY batch_id,event_id", stage / "results/decision_ledger.csv")
     export(args.psql, args.database_url, "SELECT batch_id,raw_events::text,applied::text,stale::text,superseded::text,state_rows::text,active_rows::text,deleted_rows::text FROM ops.batch_receipt ORDER BY batch_id", stage / "results/batch_receipts.csv")
 
     duplicate_count = len(event_rows) - len({row["event_id"] for row in event_rows})
