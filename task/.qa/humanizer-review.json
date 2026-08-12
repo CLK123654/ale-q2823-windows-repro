@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "skill": "humanizer-zh",
+  "result": "PASS",
+  "reviewed_scopes": [
+    "任务名称",
+    "任务概要",
+    "任务prompt",
+    "关键动作",
+    "评分表",
+    "环境依赖",
+    "软件步骤",
+    "输入材料中的自然语言",
+    "Reference中的用户可见文字",
+    "关键标准答案工作簿全部自然语言",
+    "任务规格工作簿全部自然语言"
+  ],
+  "scores": {
+    "直接性": 10,
+    "节奏": 9,
+    "信任度": 9,
+    "真实性": 9,
+    "精炼度": 9,
+    "total": 46
+  },
+  "minimum_total": 45,
+  "notes": [
+    "标题直接写商品目录乱序变更入库，没有连续名词堆叠和同批任务常见后缀。",
+    "Prompt从至少一次投递产生的重复与迟到问题切入，材料、处理和下游岗位随工作自然出现。",
+    "删除固定事件答案、固定计数、演练声明、判卷不变量和独立测试器，只保留目录运维与查询服务实际使用的SQL和目录结果。",
+    "四段依次交代现状、业务材料、批次处理和岗位接手，段长和句式不同，没有宣传比喻、三段式口号或判卷提醒。",
+    "评分表保留结构化硬标准用于客观判定，题面没有双净目录、负例、哈希、Reference比对或Windows运行过程文案。"
+  ],
+  "cross_task_distinction": {
+    "title": "商品目录乱序变更入库",
+    "opening": "商品目录服务按批次接收新增、更新和删除事件",
+    "paragraph_shape": "投递现状、接管材料、批次裁决、目录消费自然推进",
+    "delivery_sentence": "目录运维解释落选与迟到事件，查询服务按可用目录继续装载",
+    "review_result": "本题消费者是目录运维和查询服务，核心是三元位置、MERGE墓碑及批次回执，与同批设备入库、账务冲正和检索队列任务不同。"
+  },
+  "reviewed_artifacts_sha256": {
+    "ALE-专家数据作业表_q2823.csv": "cd3c96124034ab9ebbffc99d3d820de590b901e34369d9a2969ca48d03352fbe",
+    "reference.zip": "8bc534101ae1e1cd98e2048a255ca7424950b8b6657f3b44d66352e374c7c631",
+    "task_fields.json": "e696d32bcf3bdd3e39ae0e4a86b65c670b25187c7d82f99d4c3f960249f5bc58",
+    "任务prompt.txt": "de48ae63cf55acbabc8c194fa21cae4b20bed2a36b226c353640dbdaa1a5e8fe",
+    "任务名称.txt": "ac09b2e7a7dff2e77e113530fcbc7d100b8ccb25801f3708208b4d67dca09add",
+    "任务概要.txt": "6d747abc76a8224a0f75bed03c3ae81e0afd30f8e2294503decef987188427bb",
+    "任务规格转化.xlsx": "2946be63b420146f66d4f2eba33e9d5748f843798992f43e0b807da134d03824",
+    "关键动作.txt": "5436bc214f3000fe9d8a1a4674bc493bb47ee3046e1bbf2fc1c46b516b2ed757",
+    "关键标准答案.xlsx": "138ecd1b53581e13835162c9bf47f89f14b5f68b82777a044775131c1bfa8e0a",
+    "环境依赖.txt": "358c0d5c476cecff259dfb5afccbbcc124f8cc77f336e7947da542f93b0066ef",
+    "相关专业软件的关键步骤.txt": "cf56c81a615155af1cc28eb0b45f41064a7a864800ee6cc5bba4578b5c77772a",
+    "评分表.txt": "6add1ddb07bec30c0c51700f68536e49b7c40ee0b43feda4c44a87e55d64330c",
+    "输入数据包.zip": "26c3d0faf71dc74d7ab10b0058eb5131b1c24420c5276185b8edc665462206ab"
+  }
+}
